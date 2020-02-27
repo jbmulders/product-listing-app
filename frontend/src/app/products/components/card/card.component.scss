@@ -1,0 +1,31 @@
+@import "src/app/core/style/colors";
+
+:host {
+  margin: 5px;
+}
+
+mat-card {
+  max-width: 300px;
+  mat-card-header {
+    mat-card-title {
+      .price {
+        font-size: 0.7em;
+        color: $middle-gray;
+      }
+    }
+    mat-card-subtitle {
+      color: $primary;
+    }
+  }
+  mat-card-content {
+    color: $dark-gray;
+    margin: 0 16px;
+    height: 100px;
+    overflow-y: auto;
+  }
+  mat-card-actions {
+    justify-content: flex-end;
+    display: flex;
+    border-top: 1px solid $light-gray;
+  }
+}

@@ -1,0 +1,40 @@
+<mat-sidenav-container class="sidebar-container">
+    <mat-sidenav #sidenav mode="over" position="end">
+        <mat-toolbar>
+            <mat-toolbar-row>
+                <span>My wishlist ({{starredCount$ | async}})</span>
+                <span class="flex"></span>
+                <button mat-button (click)="sidenav.toggle()">CLOSE</button>
+            </mat-toolbar-row>
+        </mat-toolbar>
+
+        <div class="sidebar-card-container">
+            <h4 *ngIf="(starredCount$ | async) === 0">No products in your wishlist</h4>
+            <app-sidebar-card *ngFor="let product of starredProducts$ | async" [product]="product"
+                (toggleStarred)="toggleStarred($event)">
+            </app-sidebar-card>
+        </div>
+
+
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+        <mat-toolbar color="primary">
+            <mat-toolbar-row>
+                <span>My Product List</span>
+                <span class="flex"></span>
+                <button mat-icon-button class="icon" [matBadge]="starredCount$ | async" matBadgePosition="before"
+                    matBadgeColor="warn" (click)="sidenav.toggle()">
+                    <mat-icon>favorite</mat-icon>
+                </button>
+            </mat-toolbar-row>
+        </mat-toolbar>
+
+        <!-- todo: remove inline style... -->
+        <div class="card-container">
+            <app-card *ngFor="let product of products$ | async" [product]="product"
+                (toggleStarred)="toggleStarred($event)">
+            </app-card>
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>

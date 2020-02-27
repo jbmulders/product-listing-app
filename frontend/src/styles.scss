@@ -1,0 +1,29 @@
+@import "app/core/style/colors";
+
+$font-family: Roboto, "Helvetica Neue", sans-serif;
+
+html,
+body {
+  height: 100%;
+  background-color: $lightest-gray;
+}
+body {
+  margin: 0;
+  font-family: $font-family;
+}
+
+mat-toolbar {
+  .flex {
+    flex: 1 1 auto;
+  }
+}
+
+.red {
+  color: $accent;
+}
+.gray {
+  color: $dark-gray;
+}
+.gold {
+  color: $gold;
+}
