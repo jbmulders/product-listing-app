@@ -2,8 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable, combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { ProductsService } from 'app/products/services/products/products.service';
-import { IProduct } from './models/product';
-import { IStarred } from './models/starred';
+import { IProduct, IStarred } from '@model';
 
 @Injectable({
   providedIn: 'root',

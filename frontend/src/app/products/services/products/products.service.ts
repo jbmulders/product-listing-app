@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { IProduct } from 'app/products/models/product';
-import { IStarred } from 'app/products/models/starred';
+import { IProduct, IStarred } from '@model';
 import { BehaviorSubject, Observable } from 'rxjs';
 
 import { Products } from './products';

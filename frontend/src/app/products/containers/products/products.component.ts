@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ProductFacade } from 'app/products/products-facade';
 
-import { IProduct } from 'app/products/models/product';
-import { IStarEvent } from 'app/products/models/starEvent';
+import { IProduct, IStarEvent } from '@model';
 
 @Component({
   selector: 'app-products',

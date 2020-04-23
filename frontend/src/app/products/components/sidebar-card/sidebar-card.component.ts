@@ -1,6 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { IProduct } from 'app/products/models/product';
-import { IStarEvent } from 'app/products/models/starEvent';
+import { IProduct, IStarEvent } from '@model';
 
 @Component({
   selector: 'app-sidebar-card',

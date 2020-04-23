@@ -1,11 +1,10 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { IProduct } from 'app/products/models/product';
-import { IStarEvent } from 'app/products/models/starEvent';
+import { IProduct, IStarEvent } from '@model';
 
 @Component({
   selector: 'app-card',
   templateUrl: './card.component.html',
-  styleUrls: ['./card.component.scss']
+  styleUrls: ['./card.component.scss'],
 })
 export class CardComponent {
   @Input()
@@ -13,5 +12,4 @@ export class CardComponent {
 
   @Output()
   toggleStarred = new EventEmitter<IStarEvent>();
-
 }
