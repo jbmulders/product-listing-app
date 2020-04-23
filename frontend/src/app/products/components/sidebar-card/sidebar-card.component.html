@@ -1,6 +1,10 @@
-<div class='card'>
-    <h2>{{product.name}}</h2>
-    <button mat-icon-button (click)="toggleStarred.emit(product)" class="red">
-        <mat-icon>close</mat-icon>
-    </button>
+<div class="card">
+  <h2>{{ product.name }}</h2>
+  <button
+    mat-icon-button
+    (click)="toggleStarred.emit({ event: $event, product: product })"
+    class="red"
+  >
+    <mat-icon>close</mat-icon>
+  </button>
 </div>

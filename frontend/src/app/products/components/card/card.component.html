@@ -1,17 +1,21 @@
 <mat-card>
-    <mat-card-header>
-        <mat-card-title>
-            {{product.name}}
-            <span class="price">€{{product.price}}</span>
-        </mat-card-title>
-        <mat-card-subtitle>{{product.category}}</mat-card-subtitle>
-    </mat-card-header>
-    <mat-card-content>
-        <p>{{product.description}}</p>
-    </mat-card-content>
-    <mat-card-actions>
-        <button mat-icon-button (click)="toggleStarred.emit(product)" [class]="product.starred?'gold':'gray'">
-            <mat-icon>favorite</mat-icon>
-        </button>
-    </mat-card-actions>
+  <mat-card-header>
+    <mat-card-title>
+      {{ product.name }}
+      <span class="price">€{{ product.price }}</span>
+    </mat-card-title>
+    <mat-card-subtitle>{{ product.category }}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <p>{{ product.description }}</p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button
+      mat-icon-button
+      (click)="toggleStarred.emit({ event: $event, product: product })"
+      [class]="product.starred ? 'gold' : 'gray'"
+    >
+      <mat-icon>favorite</mat-icon>
+    </button>
+  </mat-card-actions>
 </mat-card>

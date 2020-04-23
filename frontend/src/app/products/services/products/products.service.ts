@@ -6,7 +6,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { Products } from './products';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ProductsService {
   private products: IProduct[];
@@ -34,7 +34,7 @@ export class ProductsService {
   }
 
   updateProduct(product: IProduct) {
-    const index = this.products.findIndex(p => p.id === product.id);
+    const index = this.products.findIndex((p) => p.id === product.id);
     this.products[index] = product;
 
     this.notifyProducts();
@@ -42,7 +42,10 @@ export class ProductsService {
 
   updateStarredProducts(product: IProduct) {
     this.starredProducts[product.id] = product.starred;
-    localStorage.setItem(this.localStorageVar, JSON.stringify(this.starredProducts));
+    localStorage.setItem(
+      this.localStorageVar,
+      JSON.stringify(this.starredProducts)
+    );
 
     this.notifyStarred();
   }
@@ -62,7 +65,8 @@ export class ProductsService {
   private initStarredProducts(): void {
     const localStarred = localStorage.getItem(this.localStorageVar);
 
-    this.starredProducts = localStarred && localStarred.length > 0 ? JSON.parse(localStarred) : {};
+    this.starredProducts =
+      localStarred && localStarred.length > 0 ? JSON.parse(localStarred) : {};
 
     this.notifyStarred();
   }

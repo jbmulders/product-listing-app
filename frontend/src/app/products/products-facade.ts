@@ -6,9 +6,9 @@ import { IProduct } from './models/product';
 import { IStarred } from './models/starred';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-export class ProductsDataLayer {
+export class ProductFacade {
   private products$: Observable<IProduct[]>;
   private starredProducts$: Observable<IStarred>;
 
@@ -20,20 +20,22 @@ export class ProductsDataLayer {
   getAllProducts(): Observable<IProduct[]> {
     return combineLatest([this.products$, this.starredProducts$]).pipe(
       map(([products, starredMap]: [IProduct[], IStarred]) =>
-        products.map(p => (p.starred = starredMap[p.id] ? true : false, p))),
-      map(this.sortProducts));
+        products.map((p) => ((p.starred = starredMap[p.id] ? true : false), p))
+      ),
+      map(this.sortProducts)
+    );
   }
 
   getStarredProducts(): Observable<IProduct[]> {
     return this.getAllProducts().pipe(
-      map(pArray => pArray.filter(this.starredProductsFilter))
+      map((pArray) => pArray.filter(this.starredProductsFilter))
     );
   }
 
   getStarredProductsCount() {
     return this.getAllProducts().pipe(
-      map(pArray => pArray.filter(this.starredProductsFilter)),
-      map(pArray => pArray.length)
+      map((pArray) => pArray.filter(this.starredProductsFilter)),
+      map((pArray) => pArray.length)
     );
   }
 
@@ -47,7 +49,7 @@ export class ProductsDataLayer {
   }
 
   private sortProducts(array: IProduct[]) {
-    return array.sort((a, b) => a.name > b.name ? 1 : -1);
+    return array.sort((a, b) => (a.name > b.name ? 1 : -1));
   }
 
   private starredProductsFilter(product: IProduct) {

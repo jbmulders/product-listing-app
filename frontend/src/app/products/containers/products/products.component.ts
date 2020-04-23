@@ -1,29 +1,33 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ProductsDataLayer } from 'app/products/products-data-layer';
+import { ProductFacade } from 'app/products/products-facade';
 
 import { IProduct } from 'app/products/models/product';
+import { IStarEvent } from 'app/products/models/starEvent';
 
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
-  styleUrls: ['./products.component.scss']
+  styleUrls: ['./products.component.scss'],
 })
 export class ProductsComponent implements OnInit {
   public products$: Observable<IProduct[]>;
   public starredProducts$: Observable<IProduct[]>;
   public starredCount$: Observable<number>;
 
-  constructor(private productDataLayer: ProductsDataLayer) { }
+  constructor(private productFacade: ProductFacade) {}
 
   ngOnInit(): void {
-    this.products$ = this.productDataLayer.getAllProducts();
-    this.starredProducts$ = this.productDataLayer.getStarredProducts();
-    this.starredCount$ = this.productDataLayer.getStarredProductsCount();
+    this.products$ = this.productFacade.getAllProducts();
+    this.starredProducts$ = this.productFacade.getStarredProducts();
+    this.starredCount$ = this.productFacade.getStarredProductsCount();
   }
 
-  toggleStarred(product: IProduct): void {
-    this.productDataLayer.toggleStarred(product);
+  toggleStarred(event: IStarEvent): void {
+    this.productFacade.toggleStarred(event.product);
   }
 
+  clearAll() {
+    this.productFacade.clearLocalStorage();
+  }
 }
